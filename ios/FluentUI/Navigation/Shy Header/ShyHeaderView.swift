@@ -135,11 +135,17 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
         }
     }
 
+    var accessoryViewHeight: CGFloat? // todo huan: call maxHeightChanged?
+
     var maxHeight: CGFloat {
         if accessoryView == nil {
             return maxHeightNoAccessory
         } else {
-            return contentTopInset + Constants.accessoryHeight + contentBottomInset
+            guard let accessoryViewHeight else {
+                return contentTopInset + Constants.accessoryHeight + contentBottomInset
+            }
+
+            return contentTopInset + accessoryViewHeight + contentBottomInset
         }
     }
     private var maxHeightNoAccessory: CGFloat {

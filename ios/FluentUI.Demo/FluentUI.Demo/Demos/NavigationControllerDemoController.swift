@@ -218,7 +218,7 @@ class NavigationControllerDemoController: DemoController {
         content.navigationItem.backButtonTitle = "99+"
         content.navigationItem.navigationBarStyle = style
         content.navigationItem.navigationBarShadow = showShadow ? .automatic : .alwaysHidden
-        content.navigationItem.accessoryView = accessoryView
+//        content.navigationItem.accessoryView = accessoryView
         content.navigationItem.topAccessoryViewAttributes = NavigationBarTopSearchBarAttributes()
         content.navigationItem.contentScrollView = contractNavigationBarOnScroll ? content.tableView : nil
         content.showsTopAccessoryView = showsTopAccessory
@@ -230,6 +230,8 @@ class NavigationControllerDemoController: DemoController {
         }
 
         let controller = NavigationController(rootViewController: content)
+        controller.setAccessoryViewHeight(100.0)
+        content.navigationItem.accessoryView = accessoryView
         let navigationBar = controller.msfNavigationBar
         navigationBar.gradient = gradient
         navigationBar.gradientMask = gradientMask
