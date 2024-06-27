@@ -20,6 +20,7 @@ import UIKit
         static var customNavigationBarColor: UInt8 = 0
         static var customSubtitleTrailingImage: UInt8 = 0
         static var isTitleImageLeadingForTitleAndSubtitle: UInt8 = 0
+        static var searchBarInAccessoryView: UInt8 = 0
     }
 
     var accessoryView: UIView? {
@@ -28,6 +29,15 @@ import UIKit
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.accessoryView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    var searchBarInAccessoryView: SearchBar? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.searchBarInAccessoryView) as? SearchBar
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.searchBarInAccessoryView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 

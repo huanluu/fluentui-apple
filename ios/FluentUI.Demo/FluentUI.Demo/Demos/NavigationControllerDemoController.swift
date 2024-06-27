@@ -231,7 +231,25 @@ class NavigationControllerDemoController: DemoController {
 
         let controller = NavigationController(rootViewController: content)
         controller.setAccessoryViewHeight(100.0)
-        content.navigationItem.accessoryView = accessoryView
+//        content.navigationItem.accessoryView = accessoryView
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.alignment = .leading
+        stackView.axis = .vertical
+        //        stackView.distribution = .fill
+        if let accessoryView {
+//            accessoryView.navigationCon
+            if let searchBar1 = accessoryView as? SearchBar {
+                content.navigationItem.searchBarInAccessoryView = searchBar1
+            }
+            stackView.addArrangedSubview(accessoryView)
+            let searchBar = SearchBar()
+            searchBar.style = .onBrandNavigationBar
+            searchBar.placeholderText = "Search"
+            stackView.addArrangedSubview(searchBar)
+        }
+
+        content.navigationItem.accessoryView = stackView
         let navigationBar = controller.msfNavigationBar
         navigationBar.gradient = gradient
         navigationBar.gradientMask = gradientMask
