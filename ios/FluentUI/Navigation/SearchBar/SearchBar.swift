@@ -599,7 +599,15 @@ extension SearchBar: UITextFieldDelegate {
 // MARK: - UINavigationItem extension
 
 extension UINavigationItem {
-    var accessorySearchBar: SearchBar? { return accessoryView as? SearchBar }
+    var accessorySearchBar: SearchBar? {
+        if let accessoryViewAsSearchBar = accessoryView as? SearchBar {
+            return accessoryViewAsSearchBar
+        } else if let searchBarInAccessoryView = searchBarInAccessoryView {
+            return searchBarInAccessoryView
+        }
+
+        return nil
+    }
 }
 
 // MARK: - SearchBarTextField
