@@ -148,11 +148,11 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
         }
     }
 
-    var accessoryViewHeight: CGFloat = 0.0 { // todo huan: call maxHeightChanged?
-        didSet {
-           contentStackViewHeightConstraint?.constant = contentTopInset + accessoryViewHeight + contentBottomInset
-        }
-    }
+//    var accessoryViewHeight: CGFloat = 0.0 { // todo huan: call maxHeightChanged?
+//        didSet {
+//           contentStackViewHeightConstraint?.constant = contentTopInset + accessoryViewHeight + contentBottomInset
+//        }
+//    }
 
     var wideAccessoryViewHeight: CGFloat = 0.0 {// todo huan: call maxHeightChanged?
         didSet {
@@ -166,9 +166,9 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
         } else if accessoryView == nil { // Only wideAccessoryView
             return wideAccessoryViewHeight
         } else if wideAccessoryView == nil { // Only accessoryView
-            return contentTopInset + accessoryViewHeight + contentBottomInset
+            return contentTopInset + Constants.accessoryHeight + contentBottomInset
         } else { // Both accessoryView and wideAccessoryView
-            return contentTopInset + accessoryViewHeight + contentBottomInset + wideAccessoryViewHeight
+            return contentTopInset + Constants.accessoryHeight + contentBottomInset + wideAccessoryViewHeight
         }
     }
 

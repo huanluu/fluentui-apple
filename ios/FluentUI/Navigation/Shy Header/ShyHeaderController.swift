@@ -70,11 +70,11 @@ class ShyHeaderController: UIViewController {
     // The context of the parent controller used to pull the correct FluentTheme to update visuals
     weak var containingView: UIView?
 
-    var accessoryViewHeight: CGFloat = 0.0 {
-        didSet {
-            shyHeaderView.accessoryViewHeight = accessoryViewHeight
-        }
-    }
+//    var accessoryViewHeight: CGFloat = 0.0 {
+//        didSet {
+//            shyHeaderView.accessoryViewHeight = accessoryViewHeight
+//        }
+//    }
 
     var wideAccessoryViewHeight: CGFloat = 0.0 {
         didSet {

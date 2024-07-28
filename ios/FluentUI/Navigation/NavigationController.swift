@@ -122,9 +122,9 @@ open class NavigationController: UINavigationController {
         return (controller as? ShyHeaderController)?.contentViewController ?? controller
     }
 
-    @objc public func setAccessoryViewHeight(_ accessoryViewHeight: CGFloat) {
-        (topViewController as? ShyHeaderController)?.accessoryViewHeight = accessoryViewHeight
-    }
+//    @objc public func setAccessoryViewHeight(_ accessoryViewHeight: CGFloat) {
+//        (topViewController as? ShyHeaderController)?.accessoryViewHeight = accessoryViewHeight
+//    }
 
     @objc public func setWideAccessoryViewHeight(_ wideAccessoryViewHeight: CGFloat) {
         (topViewController as? ShyHeaderController)?.wideAccessoryViewHeight = wideAccessoryViewHeight
