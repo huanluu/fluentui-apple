@@ -188,7 +188,7 @@ class NavigationControllerDemoController: DemoController {
     }
 
     @objc func showWithTopSearchBar() {
-        presentController(withTitleStyle: .largeLeading, style: .system, accessoryView: createAccessoryView(with: .onSystemNavigationBar), showsTopAccessory: true, contractNavigationBarOnScroll: false)
+        presentController(withTitleStyle: .largeLeading, style: .system, accessoryView: createAccessoryView(with: .onSystemNavigationBar), showsTopAccessory: true, contractNavigationBarOnScroll: true)
     }
 
     @objc func showSearchChangingStyleEverySecond() {
@@ -861,9 +861,9 @@ class RootViewController: UIViewController, UITableViewDataSource, UITableViewDe
 extension RootViewController: SearchBarDelegate {
     func searchBarDidBeginEditing(_ searchBar: SearchBar) {
         searchBar.progressSpinner.state.isAnimating = false
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+        if !showsTopAccessoryView {
             msfNavigationController?.setWideAccessoryViewHeight(0.0)
-//        }
+        }
     }
 
     func searchBar(_ searchBar: SearchBar, didUpdateSearchText newSearchText: String?) {
@@ -871,7 +871,9 @@ extension RootViewController: SearchBarDelegate {
 
     func searchBarDidCancel(_ searchBar: SearchBar) {
         searchBar.progressSpinner.state.isAnimating = false
-        msfNavigationController?.setWideAccessoryViewHeight(50.0)
+        if !showsTopAccessoryView {
+            msfNavigationController?.setWideAccessoryViewHeight(50.0)
+        }
     }
 
     func searchBarDidRequestSearch(_ searchBar: SearchBar) {
