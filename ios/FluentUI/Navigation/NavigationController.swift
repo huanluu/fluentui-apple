@@ -126,6 +126,10 @@ open class NavigationController: UINavigationController {
         (topViewController as? ShyHeaderController)?.accessoryViewHeight = accessoryViewHeight
     }
 
+    @objc public func setWideAccessoryViewHeight(_ wideAccessoryViewHeight: CGFloat) {
+        (topViewController as? ShyHeaderController)?.wideAccessoryViewHeight = wideAccessoryViewHeight
+    }
+
     private func wrapViewControllerIfNeeded(_ viewController: UIViewController) -> UIViewController {
         if !viewControllerNeedsWrapping(viewController) {
             return viewController

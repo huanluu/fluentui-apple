@@ -232,36 +232,16 @@ class NavigationControllerDemoController: DemoController {
         }
 
         let controller = NavigationController(rootViewController: content)
-        controller.setAccessoryViewHeight(100.0)
-//        content.navigationItem.accessoryView = accessoryView
-//        let stackView = UIStackView()
-//        stackView.translatesAutoresizingMaskIntoConstraints = false
-//        stackView.alignment = .leading
-//        stackView.axis = .vertical
-//        //        stackView.distribution = .fill
-//        if let accessoryView {
-////            accessoryView.navigationCon
-//            if let searchBar1 = accessoryView as? SearchBar {
-//                content.navigationItem.searchBarInAccessoryView = searchBar1
-//            }
-//            stackView.addArrangedSubview(accessoryView)
-//            let searchBar = SearchBar()
-//            searchBar.style = .onBrandNavigationBar
-//            searchBar.placeholderText = "Search"
-//            stackView.addArrangedSubview(searchBar)
-//        }
+        controller.setAccessoryViewHeight(36.0)
+        controller.setWideAccessoryViewHeight(50.0)
 
         if let searchBar = accessoryView as? SearchBar {
             let label = Label()
             label.translatesAutoresizingMaskIntoConstraints = false
             label.text = "Some random control \nSecond line"
             label.numberOfLines = 2
-
-            let accessoryStackView = createGeneralAccessoryView(with: searchBar, label: label)
-            content.navigationItem.accessoryView = accessoryStackView
-            content.navigationItem.searchBarInAccessoryView = searchBar
-            content.accessoryStackView = accessoryStackView
-            content.accesoryLabel = label
+            content.navigationItem.accessoryView = searchBar
+            content.navigationItem.wideAccessoryView = label
         }
         let navigationBar = controller.msfNavigationBar
         navigationBar.gradient = gradient
@@ -881,12 +861,9 @@ class RootViewController: UIViewController, UITableViewDataSource, UITableViewDe
 extension RootViewController: SearchBarDelegate {
     func searchBarDidBeginEditing(_ searchBar: SearchBar) {
         searchBar.progressSpinner.state.isAnimating = false
-
-        msfNavigationController?.setAccessoryViewHeight(36.0)
-        if let accesoryLabel {
-            accessoryStackView?.removeArrangedSubview(accesoryLabel)
-            accesoryLabel.removeFromSuperview()
-        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+            msfNavigationController?.setWideAccessoryViewHeight(0.0)
+//        }
     }
 
     func searchBar(_ searchBar: SearchBar, didUpdateSearchText newSearchText: String?) {
@@ -894,10 +871,7 @@ extension RootViewController: SearchBarDelegate {
 
     func searchBarDidCancel(_ searchBar: SearchBar) {
         searchBar.progressSpinner.state.isAnimating = false
-        msfNavigationController?.setAccessoryViewHeight(100.0)
-        if let accesoryLabel {
-            accessoryStackView?.addArrangedSubview(accesoryLabel)
-        }
+        msfNavigationController?.setWideAccessoryViewHeight(50.0)
     }
 
     func searchBarDidRequestSearch(_ searchBar: SearchBar) {

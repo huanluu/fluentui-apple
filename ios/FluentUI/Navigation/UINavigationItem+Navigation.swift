@@ -21,6 +21,7 @@ import UIKit
         static var customSubtitleTrailingImage: UInt8 = 0
         static var isTitleImageLeadingForTitleAndSubtitle: UInt8 = 0
         static var searchBarInAccessoryView: UInt8 = 0
+        static var wideAccessoryView: UInt8 = 0
     }
 
     var accessoryView: UIView? {
@@ -29,6 +30,15 @@ import UIKit
         }
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.accessoryView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    var wideAccessoryView: UIView? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.wideAccessoryView) as? UIView
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.wideAccessoryView, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         }
     }
 

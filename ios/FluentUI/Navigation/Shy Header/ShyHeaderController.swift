@@ -45,6 +45,7 @@ class ShyHeaderController: UIViewController {
     }
 
     private var accessoryViewObservation: NSKeyValueObservation?
+    private var wideAccessoryViewObservation: NSKeyValueObservation?
 
     private var navigationBarCenterObservation: NSKeyValueObservation?
     private var navigationBarStyleObservation: NSKeyValueObservation?
@@ -69,9 +70,15 @@ class ShyHeaderController: UIViewController {
     // The context of the parent controller used to pull the correct FluentTheme to update visuals
     weak var containingView: UIView?
 
-    var accessoryViewHeight: CGFloat? {
+    var accessoryViewHeight: CGFloat = 0.0 {
         didSet {
             shyHeaderView.accessoryViewHeight = accessoryViewHeight
+        }
+    }
+
+    var wideAccessoryViewHeight: CGFloat = 0.0 {
+        didSet {
+            shyHeaderView.wideAccessoryViewHeight = wideAccessoryViewHeight
         }
     }
 
@@ -106,6 +113,10 @@ class ShyHeaderController: UIViewController {
 
         accessoryViewObservation = contentViewController.navigationItem.observe(\UINavigationItem.accessoryView) { [weak self] item, _ in
             self?.shyHeaderView.accessoryView = item.accessoryView
+        }
+
+        wideAccessoryViewObservation = contentViewController.navigationItem.observe(\UINavigationItem.wideAccessoryView) { [weak self] item, _ in
+            self?.shyHeaderView.wideAccessoryView = item.wideAccessoryView
         }
     }
 
@@ -218,6 +229,7 @@ class ShyHeaderController: UIViewController {
 
     private func setupShyHeaderView() {
         shyHeaderView.accessoryView = contentViewController.navigationItem.accessoryView
+        shyHeaderView.wideAccessoryView = contentViewController.navigationItem.wideAccessoryView
         shyHeaderView.navigationBarShadow = contentViewController.navigationItem.navigationBarShadow
         shyHeaderView.paddingView = paddingView
         shyHeaderView.parentController = self
