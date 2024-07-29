@@ -156,7 +156,7 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
 
     var wideAccessoryViewHeight: CGFloat = 0.0 {// todo huan: call maxHeightChanged?
         didSet {
-            self.wideContentStackViewHeightConstraint?.constant = self.wideAccessoryViewHeight
+//            self.wideContentStackViewHeightConstraint?.constant = self.wideAccessoryViewHeight
         }
     }
 
@@ -264,7 +264,7 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
             contentStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             contentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             contentStackView.topAnchor.constraint(equalTo: topAnchor),
-//            contentStackView.bottomAnchor.constraint(equalTo: wideContentStackView.topAnchor, constant: -contentBottomInset),
+            contentStackView.bottomAnchor.constraint(equalTo: wideContentStackView.topAnchor),
             heightConstraint
         ])
         updateContentInsets()
@@ -275,13 +275,13 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
         wideContentStackView.backgroundColor = .white
         wideContentStackView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(wideContentStackView)
-        let heightConstraint = wideContentStackView.heightAnchor.constraint(equalToConstant: 0.0)
-        wideContentStackViewHeightConstraint = heightConstraint
+//        let heightConstraint = wideContentStackView.heightAnchor.constraint(equalToConstant: 0.0)
+//        wideContentStackViewHeightConstraint = heightConstraint
         NSLayoutConstraint.activate([
             wideContentStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
             wideContentStackView.trailingAnchor.constraint(equalTo: trailingAnchor),
             wideContentStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
-            heightConstraint
+//            heightConstraint
         ])
 
 //        contentStackView.addInteraction(UILargeContentViewerInteraction()) // todo huan

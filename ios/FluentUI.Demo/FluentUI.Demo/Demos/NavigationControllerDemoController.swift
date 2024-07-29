@@ -233,7 +233,7 @@ class NavigationControllerDemoController: DemoController {
 
         let controller = NavigationController(rootViewController: content)
 //        controller.setAccessoryViewHeight(36.0)
-        controller.setWideAccessoryViewHeight(50.0)
+
 
         if let searchBar = accessoryView as? SearchBar {
             let label = Label()
@@ -243,6 +243,7 @@ class NavigationControllerDemoController: DemoController {
             content.navigationItem.accessoryView = searchBar
             content.navigationItem.wideAccessoryView = label
         }
+        controller.setWideAccessoryViewHeight(50.0)
         let navigationBar = controller.msfNavigationBar
         navigationBar.gradient = gradient
         navigationBar.gradientMask = gradientMask
