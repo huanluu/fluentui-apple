@@ -144,6 +144,11 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
             if let newContentView = wideAccessoryView {
                 wideContentStackView.addArrangedSubview(newContentView)
             }
+            if accessoryView == nil {
+                NSLayoutConstraint.activate([
+                    wideContentStackView.topAnchor.constraint(equalTo: topAnchor)
+                ])
+            }
             maxHeightChanged?()
         }
     }
@@ -154,11 +159,7 @@ class ShyHeaderView: UIView, TokenizedControlInternal {
 //        }
 //    }
 
-    var wideAccessoryViewHeight: CGFloat = 0.0 {// todo huan: call maxHeightChanged?
-        didSet {
-//            self.wideContentStackViewHeightConstraint?.constant = self.wideAccessoryViewHeight
-        }
-    }
+    var wideAccessoryViewHeight: CGFloat = 0.0
 
     var maxHeight: CGFloat {
         if accessoryView == nil && wideAccessoryView == nil {
